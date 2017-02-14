@@ -1,6 +1,6 @@
 # delete_indices_of_elasticsearch5x
 - delete indices of elasticsearch5x by curator_cli ,ruby script and Digdag WF.
-- The target indices sets variables of `del_old_indices.dig` below.
+- The target indices sets variables of `del_old_indices.dig` below. Change for your environment.
 
 ```
   older_counts_days: "10"
