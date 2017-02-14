@@ -1,5 +1,11 @@
 # delete_indices_of_elasticsearch5x
-delete indices of elasticsearch5x by curator_cli ,ruby script and Digdag WF.
+- delete indices of elasticsearch5x by curator_cli ,ruby script and Digdag WF.
+- The target indices sets variables of `del_old_indices.dig` below.
+
+```
+  older_counts_days: "10"
+  indexname: [packetbeat-,metricbeat-,winlogbeat-,filebeat-]
+```
 
 ## Env.
 - CentOS Linux release 7.2
