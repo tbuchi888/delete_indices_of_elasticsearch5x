@@ -1,0 +1,33 @@
+timezone: Asia/Tokyo
+
+_export:
+  workflow_name: "delete_old_indices_of_elasticsearch5x"
+  start_msg:     "digdag ${workflow_name} start"
+  end_msg:       "digdag ${workflow_name} finish"
+  error_msg:     "digdag ${workflow_name} error"
+  older_counts_days: "10"
+
++strat:
+  echo>: ${start_msg}
+
+# Delete old indices
++repeat:
+  for_each>:
+    indexname: [packetbeat-,metricbeat-,winlogbeat-,filebeat-]
+  _do:
+    sh>: ruby ./del_old_indices.rb ${indexname} ${older_counts_days}
+  _parallel: false
+
+# df & curator_cli show_indices
++df_show_indices:
+  sh>: df && curator_cli show_indices
+
+## This is for _error confirmation.
+##+fail:
+##  fail>: "fail!"
+
++end:
+  echo>: ${end_msg}
+
+_error:
+  echo>: ${error_msg}
