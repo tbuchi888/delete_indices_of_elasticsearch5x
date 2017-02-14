@@ -1,0 +1,2 @@
+# delete_indices_of_elasticsearch5x
+delete indices of elasticsearch5x
